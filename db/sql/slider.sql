@@ -1,14 +1,14 @@
-CREATE TABLE IF NOT EXISTS linearSlider
+CREATE TABLE IF NOT EXISTS slider
 (
     username        VARCHAR(30) NOT NULL,
     experiment      VARCHAR(30) NOT NULL,
-    type            ENUM ('linear', 'log') ,
-    xmin	        INT NOT NULL DEFAULT 0,
-    xmax	        INT NOT NULL DEFAULT 1000 ,
-    ymin	        INT NOT NULL DEFAULT 1,
-    ymax	        INT NOT NULL DEFAULT 10,
-    xvar_name	    'Cost',
-    yvar_name	    'Value',
+    
+    graph           ENUM ('linear', 'log') ,
+    min	            INT NOT NULL DEFAULT 0,
+    max	            INT NOT NULL DEFAULT 1000 ,
+
+    type            VARCHAR(30) NOT NULL,
+    label           VARCHAR(30),
 
     PRIMARY KEY (username, experiment, type)
 );
