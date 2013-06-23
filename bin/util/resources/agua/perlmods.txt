@@ -61,3 +61,4 @@ File::Spec::Functions
 Class::DBI::Lite
 Method::Signatures::Modifiers
 Net::RabbitFoot --force
+Authen::Simple::ActiveDirectory
