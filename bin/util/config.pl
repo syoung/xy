@@ -109,7 +109,7 @@ my $sqldir    	= 	"$Bin/../../db/sql";
 my $mode        = 	"config";
 my $dbtype		=	"MySQL";
 my $database;
-my $tableorder  =   "experiment,dataseries,slider";  #### FIRST FILES IN REVERSE ORDER
+my $tableorder  =   "experiment,poll,slider";  #### FIRST FILES IN REVERSE ORDER
 my $inputfile  = 	"$Bin/../../conf/config.yaml";
 my $logfile     = 	"$Bin/../../log/xy-config.log";
 my $SHOWLOG     =    2;
