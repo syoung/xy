@@ -13,6 +13,7 @@ define([
 	"plugins/exchange/Exchange",
 	"plugins/core/Common",
 	"plugins/form/ValidationTextBox",
+	"plugins/xy/Experiment",
 	//"plugins/graph/Graph",
 	"dojo/ready",
 	"dojo/domReady!",
@@ -37,7 +38,7 @@ define([
 	"dijit/form/Select"
 ],
 
-function (declare, arrayUtil, on, when, lang, domAttr, domClass, registry, JSON, Observable, Exchange, Common, Textbox, ready) {
+function (declare, arrayUtil, on, when, lang, domAttr, domClass, registry, JSON, Observable, Exchange, Common, Textbox, Experiment, ready) {
 
 ////}}}}}
 
@@ -160,7 +161,6 @@ toggleCreate : function () {
 
 	domClass.toggle(this.createExperiment, "visible");
 },
-
 // CREATE VARIABLES SELECT
 setVariableSelect : function () {
 	console.log("Xy.setVariableSelect    ");
@@ -220,6 +220,46 @@ setExperiments : function () {
 	console.log("Xy.setExperiments    experiments: " + experiments);
 	console.dir({experiments:experiments});
 
+	var username = Agua.cookie("username");
+	console.log("Xy.setExperiments    username: " + username);
+	experiments = this.filterByKeyValues(experiments, ["username"], [username]);
+	console.log("Xy.setExperiments    FILTERED experiments: " + experiments);
+	console.dir({experiments:experiments});	
+	
+	var userExperiments = this.getUserExperiments(experiments);
+	console.log("Xy.setExperiments    FILTERED userExperiments: " + userExperiments);
+	console.dir({userExperiments:userExperiments});	
+	
+	for ( var experimentName in userExperiments ) {
+		var experiment = new Experiment({
+			experiment : experimentName,
+			entries : userExperiments[experimentName]
+		});
+	
+		console.log("Xy.setExperiments    experiment: " + experiment);
+		console.dir({experiment:experiment});
+		
+		// ADD TO PAGE
+		this.experimentList.appendChild(experiment.containerNode);
+
+	}	
+},
+getUserExperiments : function (experiments) {
+	console.log("Xy.getUserExperements    experiments: " + experiments);
+	console.dir({experiments:experiments});	
+
+	var id = "experiment";
+	var hash = {};
+	arrayUtil.forEach(experiments, function(item, i) {
+		if( ! hash[item[id]] ) {
+			hash[item[id]] = new Array;
+		}
+		hash[item[id]].push(item);
+	});
+	console.log("Xy.getUserExperements    hash: " + hash);
+	console.dir({hash:hash});
+	
+	return hash;
 },
 
 // VARIABLE INPUTS
@@ -339,7 +379,7 @@ setExchange : function () {
 	//setTimeout(function(){
 	//	thisObject.core.exchange.connect();
 	//},
-	//1000);	
+	//1000);
 
 	return this.core.exchange;
 },
