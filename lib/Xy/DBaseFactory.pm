@@ -14,7 +14,7 @@ sub new {
     my $class          = shift;
     my $requested_type = shift;
     
-    my $location    = "Infusion/DBase/$requested_type.pm";
+    my $location    = "Xy/DBase/$requested_type.pm";
     $class          = "Xy::DBase::$requested_type";
     require $location;
 

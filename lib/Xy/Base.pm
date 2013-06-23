@@ -30,6 +30,7 @@ has 'newvalue'	=> ( isa => 'Str|Undef', is => 'rw', default => '' );
 has 'field'		=> ( isa => 'Str|Undef', is => 'rw', default => '' );
 
 # Objects
+has 'query'	=> ( isa => 'HashRef|Undef', is => 'rw', default => undef );
 has 'data'	=> ( isa => 'HashRef|Undef', is => 'rw', default => undef );
 has 'db'	=> ( isa => 'Agua::DBase::MySQL', is => 'rw', required => 0 );
 has 'conf' 	=> (
@@ -267,6 +268,26 @@ OUTPUTS
 		
 
 =cut
+
+method createExperiment () {
+	my $query = $self->query();
+	$self->logDebug("query", $query);
+	my $experiment 	=	 $query->{experiment};
+	my $username	=	$self->username();
+	
+	my $exists = $self->experimentExists($username, $experiment);	
+	$self->logDebug("exists", $exists);	
+
+}
+
+method experimentExists ($username, $experiment) {
+	my $query = qq{SELECT 1 FROM experiment
+WHERE username='$username'
+AND experiment='$experiment'};
+	my $exists = $self->db()->query($query);
+	$self->logDebug("exists", $exists);
+	
+}
 
 method _updateTable ($table, $data, $required_fields, $set_data, $set_fields){
 

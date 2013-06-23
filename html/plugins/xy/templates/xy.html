@@ -41,13 +41,10 @@
 
 				<div
 					data-dojo-attach-point="createExperiment"
+					title="Click to create your new experiment"
 					class="createExperiment"
 				>
 
-					<div class="subTitle">
-						Create a New Experiment
-					</div>
-					
 					<table
 						class="createTable">
 						<tr>
@@ -57,7 +54,7 @@
 							<td>
 								<input
 									class="input"
-									data-dojo-attach-point="input"
+									data-dojo-attach-point="experimentName"
 									type="text"
 									data-dojo-type="dijit/form/ValidationTextBox"
 									required="true"
@@ -89,7 +86,9 @@
 							<td>
 								<div
 									data-dojo-attach-point="variableInputs"
+									class="variableInputs"
 								>
+									
 									Input variables
 								</div>
 							</td>

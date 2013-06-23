@@ -126,6 +126,8 @@ startup : function () {
 	// ADD PANE TO CONTAINER
 	this.attachPane();
 	
+	// SET DEFAULT VARIABLES
+	this.setVariables(1);
 	//// SET VARIABLE SELECT
 	//this.setVariableSelect();
 
@@ -203,7 +205,6 @@ setOptions : function (selectName, options) {
 	console.log("Xy.setOptions   options:");
 	console.dir({options:options});
 
-
 	this[selectName].set('options', options);
 },
 // VARIABLE INPUTS
@@ -216,20 +217,43 @@ setVariableInputs : function () {
 	
 	this.clearVariableInputs();
 	
+	this.setVariables(value);
+},
+getVariables : function () {
+	console.log("Xy.getVariables");
+	var variables = [];
+	for ( var i = 0; i < this.inputList.length; i++ ) {
+		console.log("Xy.getVariables    variable " + i + ": " + this.inputList[0]);
+		var value = this.inputList[i].input.value;
+		console.log("Xy.getVariables    value " + i + ": " + value);
+
+		variables.push(value);
+	}	
+	
+	return variables;
+},
+setVariables : function (value) {
+	delete this.inputList;
+	this.inputList = [];
+	
 	// ADD VARIABLES
 	for ( var i = 0; i < value; i++ ) {
 		var textbox = new Textbox({
-			label			: 	'Variable ' + i
+			label			: 	'Variable ' + (i + 1).toString()
 		});
 		console.log("Xy.setVariableInputs    textbox: " + textbox);
 		console.dir({textbox:textbox});
 
+		// PUSH TO this.inputList
+		this.inputList.push(textbox);
+		
+		// ADD TO PAGE
 		this.variableInputs.appendChild(textbox.containerNode);
 	}
 	
 },
 clearVariableInputs : function () {
-	//this.variableInputs.innerHTML = "";
+	this.variableInputs.innerHTML = "";
 
 	while ( this.variableInputs.childNodes != null && this.variableInputs.childNodes.length != 0 ) {
 		this.variableInputs.removeChild(this.variableInputs.childNodes[0]);
@@ -238,9 +262,25 @@ clearVariableInputs : function () {
 },
 // SAVE
 save : function () {
-	console.log("Xy.save    ");
-
+	console.log("Xy.save    this.inputList: ");
+	console.dir({this_inputList:this.inputList});
 	
+	var variables = this.getVariables();
+	console.log("Xy.save    variables: ");
+	console.dir({variables:variables});
+
+	// CREATE JSON QUERY
+	var url 			=	Agua.cgiUrl + "xy.cgi";
+	var query 			= 	new Object;
+	query.username 		= 	Agua.cookie('username');
+	query.sessionid 	= 	Agua.cookie('sessionid');
+	query.mode 			= 	"createExperiment";
+	query.module 		= 	"Xy::Base";
+	query.variables 	= 	variables;
+	query.experiment	=	this.experimentName.value;
+	console.log("Packages.deleteItem    query: " + dojo.toJson(query));
+
+	this.doPut({url: url, query: query, doToast: false});
 },
 // EXCHANGE
 setExchange : function () {
