@@ -50,10 +50,7 @@ widgetsInTemplate : true,
 paneWidgets : null,
 
 // AGUA WIKI
-url : "http://ukch-confluence.illumina.com/display/xy/Home",
-//url : "https://ukch-confluence.illumina.com/display/servicesSD/Home",
-//url : "pages/servicesSD/SaffronDB.html",
-//url : "http://www.aguadev.org/confluence/display/home/Home",
+url : "http://my-xy.co",
 
 // UPGRADE PROGRESS DIALOG
 progressPane : null,

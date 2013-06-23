@@ -21,6 +21,56 @@ var url 	= "./getData.json";
 
 doh.register("plugins.graph.Graph", [
 
+{
+	name: "print",
+	setUp: function(){
+		Agua.data = util.fetchJson(url);
+	},
+	runTest : function(){
+		console.log("# print");
+		
+		// ATTACH POINT
+		var attachPoint = dom.byId("attachPoint");
+		
+		var graph = new Graph();
+		
+		console.log("print    graph: " + graph);
+		console.dir({graph:graph});
+		//var data = util.fetchJson("print-data.json");
+
+		var location = window.location;
+		console.log("print    location: " + location);
+		console.dir({location:location});
+		location = location.toString().match(/^(.+\/xy\/)/)[0];
+		
+		var xLabel;
+		var yLabel;
+		var values = graph.fetchSyncJson(location + "t/plugins/graph/d3.json");
+		console.log("print    values:");
+		console.dir({values:values});
+					
+
+		var data = [
+			{
+				key 	: 	"Blood Glucose",
+				bar		:	true,
+				values	:	values
+			}
+		];
+		console.log("print    data: ");
+		console.dir({data:data});
+
+		//var series = graph.dataToSeries(data);
+		////console.log("print    series: ");
+		////console.dir({series:series});
+		
+		graph.print(attachPoint, data, "lineChart", "Date", "Freq", "Change in Frequency over Time");
+
+
+		console.log("print    END");
+	}
+}
+
 //{
 //	name: "parseUSDate",
 //	setUp: function(){
@@ -90,95 +140,95 @@ doh.register("plugins.graph.Graph", [
 //	}
 //}
 	//,
-{
-	name: "print",
-	setUp: function(){
-		Agua.data = util.fetchJson(url);
-	},
-	runTest : function(){
-		console.log("# print");
-		
-		// ATTACH POINT
-		var attachPoint = dom.byId("attachPoint");
-		
-		var graph = new Graph();
-		
-
-		console.log("print    graph: " + graph);
-		console.dir({graph:graph});
-		//var data = util.fetchJson("print-data.json");
-
-		var location = window.location;
-		console.log("print    location: " + location);
-		console.dir({location:location});
-		location = location.toString().match(/^(.+\/xy\/)/)[0];
-		
-		var text = graph.fetchSyncText(location + "t/plugins/graph/test1.csv");
-		//var text = graph.fetchSyncText("http://localhost/xy/t/plugins/graph/test1.csv");
-		//console.log("print    text: " + text);
-		//console.dir({text:text});
-		var csv = text.split("\n");
-		//console.log("print    csv: ");
-		//console.dir({csv:csv});
-		var headers = csv.shift();
-		//console.log("print    headers: " + headers);
-
-		var index1 = 1;
-		var index2 = 2;
-		
-		var xLabel;
-		var yLabel;
-
-		// IF THE xLabel AND yLabel ARE NOT PROVIDED AS ARGUMENTS,
-		// GET THEM FROM THE CSV HEADER LINE BASED ON THEIR INDEXES
-		var xLabel = headers[index1];
-		var yLabel = headers[index2];
-		
-		// SET COLUMNS TO BE EXTRACTED FROM THE FILE BASED ON THEIR INDEXES
-		var columns = [index1, index2];
-		var values = graph.csvToValues(csv, columns)
-		console.log("print    values: ");
-		console.dir({values:values});
-
-		// CONVERT DATE TO UNIX TIME
-		for ( var i = 0; i < values.length; i++ ) {
-			if ( ! values[i][0] )	continue;
-			var array = graph.parseUSDate(values[i][0]);
-			
-			values[i][0] = ( graph.dateToUnixTime(array[0], array[1], array[2]) ) * 1000;
-		}
-		
-		var values2 = [];
-		for ( var i = 0; i < values.length; i++ ) {
-			values2[values.length - (i + 1)] = values[i];
-		}
-		
-		var data = [
-			{
-				key 	: 	"Freq1",
-				bar		:	true,
-				values	:	values
-			}
-			,
-			{
-				key 	: 	"Freq2",
-				bar		:	false,
-				values	:	values2
-			}
-		];
-		//console.log("print    data: ");
-		//console.dir({data:data});
-
-		var series = graph.dataToSeries(data);
-		//console.log("print    series: ");
-		//console.dir({series:series});
-		
-		graph.print(attachPoint, series, "linePlusBarWithFocusChart", "Date", "Freq", "Change in Frequency over Time");
-
-		
-
-	}
-}
+//{
+//	name: "print",
+//	setUp: function(){
+//		Agua.data = util.fetchJson(url);
+//	},
+//	runTest : function(){
+//		console.log("# print");
+//		
+//		// ATTACH POINT
+//		var attachPoint = dom.byId("attachPoint");
+//		
+//		var graph = new Graph();
+//		
+//
+//		console.log("print    graph: " + graph);
+//		console.dir({graph:graph});
+//		//var data = util.fetchJson("print-data.json");
+//
+//		var location = window.location;
+//		console.log("print    location: " + location);
+//		console.dir({location:location});
+//		location = location.toString().match(/^(.+\/xy\/)/)[0];
+//		
+//		var text = graph.fetchSyncText(location + "t/plugins/graph/test1.csv");
+//		//var text = graph.fetchSyncText("http://localhost/xy/t/plugins/graph/test1.csv");
+//		//console.log("print    text: " + text);
+//		//console.dir({text:text});
+//		var csv = text.split("\n");
+//		//console.log("print    csv: ");
+//		//console.dir({csv:csv});
+//		var headers = csv.shift();
+//		//console.log("print    headers: " + headers);
+//
+//		var index1 = 0;
+//		var index2 = 1;
+//		
+//		var xLabel;
+//		var yLabel;
+//
+//		// IF THE xLabel AND yLabel ARE NOT PROVIDED AS ARGUMENTS,
+//		// GET THEM FROM THE CSV HEADER LINE BASED ON THEIR INDEXES
+//		var xLabel = headers[index1];
+//		var yLabel = headers[index2];
+//		
+//		// SET COLUMNS TO BE EXTRACTED FROM THE FILE BASED ON THEIR INDEXES
+//		var columns = [index1, index2];
+//		var values = graph.csvToValues(csv, columns)
+//		console.log("print    values: ");
+//		console.dir({values:values});
+//
+//		// CONVERT DATE TO UNIX TIME
+//		for ( var i = 0; i < values.length; i++ ) {
+//			if ( ! values[i][0] )	continue;
+//			var array = graph.parseUSDate(values[i][0]);
+//			
+//			values[i][0] = ( graph.dateToUnixTime(array[0], array[1], array[2]) ) * 1000;
+//		}
+//		
+//		var values2 = [];
+//		for ( var i = 0; i < values.length; i++ ) {
+//			values2[values.length - (i + 1)] = values[i];
+//		}
+//		
+//		var data = [
+//			{
+//				key 	: 	"Freq1",
+//				bar		:	true,
+//				values	:	values
+//			}
+//			,
+//			{
+//				key 	: 	"Freq2",
+//				bar		:	false,
+//				values	:	values2
+//			}
+//		];
+//		//console.log("print    data: ");
+//		//console.dir({data:data});
+//
+//		var series = graph.dataToSeries(data);
+//		//console.log("print    series: ");
+//		//console.dir({series:series});
+//		
+//		graph.print(attachPoint, series, "linePlusBarWithFocusChart", "Date", "Freq", "Change in Frequency over Time");
+//
+//		
+//
+//	}
+//}
 
 ]);
 

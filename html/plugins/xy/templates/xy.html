@@ -12,7 +12,7 @@
 		style="position: relative; min-width: 440px !important; width: 100% !important; min-height: 500px !important; height: 100% !important; padding: 0px; background: #FFF;"
 		closable="true"
 		scrollbar="true"
-		title="myXY"
+		title="myData"
 	>
 
 		<div
@@ -132,8 +132,16 @@
 				region="center"
 				doLayout="true"
 				tabStrip="true">
+			
+				<div
+					data-dojo-attach-point="graphAttachPoint"
+					class="graph">
+				</div>
+			
 			</div>
 
+			
+			
 <!--		<div
 			class="dialog"
 			data-dojo-attach-point="uploadDialogAttachPoint">

@@ -92,7 +92,7 @@ removeTab : function (tab) {
 
 dojo.addOnLoad( function() {
 		// CREATE TAB
-		//console.log("plugins.home.Controller    Doing Agua.controllers['home'].createTab()");
-		//Agua.controllers["home"].createTab();		
+		console.log("plugins.home.Controller    Doing Agua.controllers['home'].createTab()");
+		Agua.controllers["home"].createTab();		
 	}
 );

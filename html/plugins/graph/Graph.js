@@ -28,13 +28,13 @@ function (declare, arrayUtil, JSON, on, lang, domAttr, domClass, domConstruct, C
 
 ////}}}}}
 
-return declare("plugins.graph.Graph",[Data, Common], {
+return declare("plugins.graph.Graph",[Common], {
 
 // cssFiles : Array
 // CSS FILES
 cssFiles : [
 	require.toUrl("dojo/resources/dojo.css"),
-	require.toUrl("plugins/xy/css/xy.css"),
+	require.toUrl("plugins/graph/css/graph.css"),
 	require.toUrl("dojox/layout/resources/ExpandoPane.css"),
 	require.toUrl("plugins/graph/nvd3/src/nv.d3.css")
 ],
@@ -53,19 +53,57 @@ constructor : function(args) {
 	this.loadCSS();
 },
 print : function (target, data, graphType, xLabel, yLabel, legend) {
-	//console.log("Graph.print    target: " + target);
-	//console.dir({target:target});
+	console.log("Graph.print    graphType: " + graphType);
+	console.log("Graph.print    target: " + target);
+	console.dir({target:target});
 
 	// CREATE CHART NODE
 	var div = domConstruct.create("div", null, target);
-	//console.log("Graph.print    div: " + div);
-	//console.dir({div:div});
+	console.log("Graph.print    div: " + div);
+	console.dir({div:div});
 	
 	var svg = d3.select(target).append("svg");
-	//console.log("Graph.print    svg: " + svg);
-	//console.dir({svg:svg});
+	console.log("Graph.print    svg: " + svg);
+	console.dir({svg:svg});
 	
 	this[graphType](target, svg[0][0], data, xLabel, yLabel, legend);
+},
+lineChart : function (target, svg, data, xLabel, yLabel, legend) {
+	console.log("Graph.lineChart    target: " + target);
+	console.dir({target:target});
+	console.log("Graph.lineChart    data: " + data);
+	console.dir({data:data});
+	console.log("Graph.lineChart    svg: " + svg);
+	console.dir({svg:svg});
+	console.log("Graph.lineChart    d3: " + d3);
+	console.dir({d3:d3});
+	
+	var chart = nv.models.lineChart();
+
+
+	console.log("Graph.lineChart    BEFORE");
+
+	chart.xAxis
+		.axisLabel('Time (ms)')
+		.tickFormat(d3.format(',r'));
+	
+	console.log("Graph.lineChart    BEFORE chart.yAxis");
+	chart.yAxis
+		.axisLabel('Voltage (v)')
+		.tickFormat(d3.format('.02f'));
+	
+	console.log("Graph.lineChart    BEFORE d3.select");
+	d3.select(svg)
+		.datum(data)
+		.transition().duration(500)
+		.call(chart);
+	
+	console.log("Graph.lineChart    AFTER");
+	
+	nv.utils.windowResize(chart.update);
+
+  return chart;
+	
 },
 linePlusBarWithFocusChart : function (target, svg, data, xLabel, yLabel, legend) {
 	console.log("Graph.linePlusBarWithFocusChart    svg:")

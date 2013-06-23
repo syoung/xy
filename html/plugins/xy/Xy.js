@@ -14,7 +14,7 @@ define([
 	"plugins/core/Common",
 	"plugins/form/ValidationTextBox",
 	"plugins/xy/Experiment",
-	//"plugins/graph/Graph",
+	"plugins/graph/Graph",
 	"dojo/ready",
 	"dojo/domReady!",
 	
@@ -38,7 +38,7 @@ define([
 	"dijit/form/Select"
 ],
 
-function (declare, arrayUtil, on, when, lang, domAttr, domClass, registry, JSON, Observable, Exchange, Common, Textbox, Experiment, ready) {
+function (declare, arrayUtil, on, when, lang, domAttr, domClass, registry, JSON, Observable, Exchange, Common, Textbox, Experiment, Graph, ready) {
 
 ////}}}}}
 
@@ -241,8 +241,9 @@ setExperiments : function () {
 		
 		// ADD TO PAGE
 		this.experimentList.appendChild(experiment.containerNode);
-
 	}	
+
+	this.displayExperiment("bloodGlucose", "lineChart");
 },
 getUserExperiments : function (experiments) {
 	console.log("Xy.getUserExperements    experiments: " + experiments);
@@ -260,6 +261,34 @@ getUserExperiments : function (experiments) {
 	console.dir({hash:hash});
 	
 	return hash;
+},
+displayExperiment : function (experiment, graphType) {
+	console.log("Xy.displayExperment    experiment: " + experiment);
+	console.log("Xy.displayExperment    graphType: " + graphType);
+
+	var graph = new Graph();
+	console.log("Xy.displayExperment    graph: " + graph);
+	console.dir({graph:graph});
+
+	var xLabel = "Date";
+	var yLabel = "Blood Glucose";
+
+	var values = this.fetchSyncJson("plugins/xy/d3.json");
+	console.log("Xy.displayExperment    values:");
+	console.dir({values:values});
+
+	var data = [
+		{
+			key 	: 	"Blood Glucose",
+			bar		:	true,
+			values	:	values
+		}
+	];
+	console.log("Xy.displayExperment    data: ");
+	console.dir({data:data});
+	
+	graph.print(this.graphAttachPoint, data, "lineChart", "Date", "Freq", "Change in Frequency over Time");
+	
 },
 
 // VARIABLE INPUTS
@@ -305,7 +334,6 @@ setVariables : function (value) {
 		// ADD TO PAGE
 		this.variableInputs.appendChild(textbox.containerNode);
 	}
-	
 },
 clearVariableInputs : function () {
 	this.clearDiv("variableInputs");
