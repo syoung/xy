@@ -132,18 +132,20 @@ body {
 	
 	/* TEXT */
 	-moz-user-select: none;
-    color: #222;
     font-weight: bolder;
     font-size: 28px;
 	vertical-align: middle;
 	text-align: center;
 	margin-top: 5px;
-	background-color: #8F8 !important;
+
+	background-color: #f90 !important;
+    color: #000;
 }
 
 .xy .saveButton:hover,
 .xy .saveButton:active {
-	background-color: #8F8 !important;
+	background-color: #F76614 !important;
+	/*background-color: #8F8 !important;*/
 	border: 3px solid #DDD;
 	border-bottom-color: #BBB;	
 	border-left-color: #BBB;	
@@ -185,10 +187,15 @@ body {
     text-align: center;
 	width: 99%;
 	font-size: 30px;
-	border: 2px solid #F76614 !important;	
+	/*border: 2px solid #F76614 !important;	*/
+	border: 2px solid #888 !important;	
 	background-color: #FFF !important;
 }
 
+/* VARIABLE SELECT */
+.xy .variableSelect .dijit.dijitSelect.dijitValidationTextBox {
+	text-align: center !important;
+}
 
 /* VARIABLE INPUTS */
 .xy .createExperiment .createTable .variableInputs {
