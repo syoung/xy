@@ -11,10 +11,9 @@ database:
 installdir: '/xy'
 modules: Xy::Base
 tables:
-  dataseries: dataseries
+  experiment: experiment
   poll: poll
   slider: slider
-  users: users
 test:
   TESTDATABASE: testdatabase
   TESTPASSWORD: testpassword

@@ -778,7 +778,7 @@ sub cpanminusInstall {
 sub linkDirectories {
     my $self		=	shift;
 
-    my $installdir  =   $self->get_installdir();
+   my $installdir  =   $self->get_installdir();
     my $wwwdir      =   $self->get_wwwdir();
     my $urlprefix	=	$self->get_urlprefix();
 
@@ -787,31 +787,26 @@ sub linkDirectories {
     print "Xy::Installer::linkDirectories    urlprefix not defined or empty\n" if not defined $urlprefix or not $urlprefix;
 
     #### REMOVE EXISTING LINKS
-    print "Xy::Installer::linkDirectories    Removing any existing links\n";
-    $self->removeLink("$wwwdir/html/$urlprefix");
-    $self->removeLink("$wwwdir/html/$urlprefix/dojo");
-    $self->removeLink("$wwwdir/cgi-bin/$urlprefix");
-    $self->removeLink("$installdir/cgi-bin/lib");
-    $self->removeLink("$installdir/cgi-bin/sql");
-    $self->removeLink("$installdir/cgi-bin/conf");
-    $self->removeLink("$installdir/cgi-bin/log");
+    my $linksfile=	"$Bin/resources/agua/links.txt";
+    print "Xy::Installer::linkDirectories    Agua::Installer::linkDirectories(linksfile)\n";
+    print "Xy::Installer::linkDirectories    linksfile: $linksfile\n";
+    my $contents = $self->fileContents($linksfile);
+    print "Xy::Installer::linkDirectories    linksfile is empty: $linksfile\n" if not defined $contents or not $contents;
 
-    #### LINK WEB DIR AND CGI DIR
-    print "Xy::Installer::linkDirectories    Creating links\n";
-    $self->addLink("$installdir/html", "$wwwdir/html/$urlprefix");
-    $self->addLink("$wwwdir/html/$urlprefix/dojo-*", "$wwwdir/html/$urlprefix/dojo");
-    $self->addLink("$installdir/cgi-bin", "$wwwdir/cgi-bin/$urlprefix");
-    $self->addLink("$installdir/lib", "$installdir/cgi-bin/lib");
-    $self->addLink("$installdir/bin/sql", "$installdir/cgi-bin/sql");
-    $self->addLink("$installdir/conf", "$installdir/cgi-bin/conf");
-    $self->addLink("$installdir/log", "$installdir/cgi-bin/log");
-    
-	#### LINK TEST DIRS
-	my $testdir = "$installdir/t";
-	if ( -d $testdir ) {
-		$self->addLink("$installdir/t/html", "$wwwdir/html/$urlprefix/t");
-		$self->addLink("$installdir/t/cgi-bin", "$wwwdir/cgi-bin/$urlprefix/t");
-	}
+    my @commands 	= split "\n", $contents;
+    foreach my $command ( @commands )
+    {
+    	next if $command =~ /^#/ or $command =~ /^\s*$/;
+    	$command =~ s/INSTALLDIR/$installdir/g;
+    	$command =~ s/WWWDIR/$wwwdir/g;
+    	$command =~ s/URLPREFIX/$urlprefix/g;
+    	print "$command\n";
+
+		my ($source, $target)	=	 $command =~ /^\s*(\S+)\s+(\S+)/;
+		
+	    $self->removeLink($target);
+		$self->addLink($source, $target);
+    }
 	
     print "Xy::Installer::linkDirectories    Completed\n"
 }
