@@ -54,10 +54,9 @@
 
 						<tr
 							width="100%">
-							<td class="label">Name your experiment</td>
-						</tr>
-						<tr>
-							<td>
+							<td align="left"
+								class="label">Experiment</td>
+							<td align="right">
 								<input
 									class="input"
 									data-dojo-attach-point="experimentName"
@@ -68,16 +67,17 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="label">How many variables?</td>
+							<td
+								class="label">Variables</td>
 							</td>
-						</tr>
-						<tr>
-							<td>
+							<td
+								align="right">
 								<select
 									data-dojo-attach-point="variableSelect"
 									data-dojo-attach-event="onChange:setVariableInputs"
+									style="width: 250px;"
 									data-dojo-type="dijit/form/Select"
-									data-dojo-props='name:"variableSelect"',
+									data-dojo-props='name:"variableSelect", style:"width: 302px;"',
 									class="variableSelect"
 									style="width: 220px !important; text-align: center !important;"
 								>
@@ -89,13 +89,11 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td colspan="2">
 								<div
 									data-dojo-attach-point="variableInputs"
 									class="variableInputs"
 								>
-									
-									Input variables
 								</div>
 							</td>
 						</tr>
@@ -103,7 +101,7 @@
 						<tr>
 							<td
 								height="50"
-								colspan="3"
+								colspan="2"
 								data-dojo-attach-point="saveButton"
 								class="saveButton"
 								dojoAttachEvent="onclick:save"
@@ -138,7 +136,7 @@
 			
 				<div
 					data-dojo-attach-point="graphAttachPoint"
-					class="graph">
+					class="graphAttachPoint">
 				</div>
 			
 			</div>

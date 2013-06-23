@@ -98,8 +98,12 @@ lineChart : function (target, svg, data, xLabel, yLabel, legend) {
 		.call(chart);
 	
 	console.log("Graph.lineChart    AFTER");
+
 	
-	nv.utils.windowResize(chart.update);
+	setTimeout( function(){
+		nv.utils.windowResize(chart.update);
+	},
+	500);
 
   return chart;
 	

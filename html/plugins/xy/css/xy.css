@@ -126,7 +126,7 @@ body {
 	vertical-align: middle;
 	background-position: center;
 	background-repeat: no-repeat;
-	width: 150px;
+	width: 100px;
 	height: 40px;
 	border-radius: 8pt;
 	
@@ -157,6 +157,8 @@ body {
 /* CREATE EXPERIMENT */
 .xy .createExperiment {
 	display: none;
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
 }
 .xy .createExperiment .subTitle {
 	font-size: 16px;
@@ -178,6 +180,7 @@ body {
 	font-size: 18px;
 	color: #222;
 	font-weight: bold;
+	text-align: left;
 }
 
 .xy .listTitle,
@@ -190,6 +193,7 @@ body {
 	/*border: 2px solid #F76614 !important;	*/
 	border: 2px solid #888 !important;	
 	background-color: #FFF !important;
+    margin-top: 5px !important;
 }
 
 /* VARIABLE SELECT */
@@ -211,3 +215,11 @@ body {
     font-size: 20px;
 }
 
+.xy .createExperiment .variableInputs {
+    margin-top: 10px;
+}
+
+/* GRAPH */
+.xy .graphAttachPoint {
+    height: 100% !important;
+}
