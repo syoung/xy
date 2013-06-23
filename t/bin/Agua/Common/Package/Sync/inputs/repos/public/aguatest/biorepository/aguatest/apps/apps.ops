@@ -1,0 +1,19 @@
+{
+   "package" : "apps",
+   "type" : "apps",
+   "version" : "0.6.0",
+   "history" : "",
+   "installtype" : "",
+   "opsfile" : "https://api.github.com/repos/aguatest/biorepository/aguatest/apps/apps.ops",
+   "installfile" : "https://api.github.com/repos/aguatest/biorepository/aguatest/apps/apps.pm",
+   "licensefile" : "https://api.github.com/repos/aguatest/biorepository/aguatest/apps/LICENSE",
+   "readmefile" : "https://api.github.com/repos/aguatest/biorepository/aguatest/apps/README",
+   "description" : "",
+   "website" : "",
+   "authors" : [],
+   "publications" : [],
+   "organisations" : [],
+   "ISA" : {},
+   "acknowledgements" : [],
+   "citations" : []
+}

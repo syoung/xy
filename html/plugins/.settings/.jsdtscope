@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="apps"/>
+	<classpathentry kind="src" path="cloud"/>
+	<classpathentry excluding="Common/|Agua/" kind="src" path="core"/>
+	<classpathentry kind="src" path="core/Agua"/>
+	<classpathentry kind="src" path="core/Common"/>
+	<classpathentry kind="src" path="data"/>
+	<classpathentry excluding="layout/|form/" kind="src" path="dijit"/>
+	<classpathentry kind="src" path="dijit/form"/>
+	<classpathentry kind="src" path="dijit/layout"/>
+	<classpathentry kind="src" path="dnd"/>
+	<classpathentry excluding="widget/|timing/|layout/|form/uploader/plugins/|form/|data/" kind="src" path="dojox"/>
+	<classpathentry kind="src" path="dojox/data"/>
+	<classpathentry excluding="uploader/plugins/" kind="src" path="dojox/form"/>
+	<classpathentry kind="src" path="dojox/form/uploader/plugins"/>
+	<classpathentry kind="src" path="dojox/layout"/>
+	<classpathentry kind="src" path="dojox/timing"/>
+	<classpathentry kind="src" path="dojox/widget"/>
+	<classpathentry kind="src" path="files"/>
+	<classpathentry kind="src" path="folders"/>
+	<classpathentry kind="src" path="form"/>
+	<classpathentry excluding="src/models/backup/|src/models/|deprecated/|deprecated/charts/|lib/|examples/|src/" kind="src" path="graph/nvd3"/>
+	<classpathentry excluding="charts/" kind="src" path="graph/nvd3/deprecated"/>
+	<classpathentry kind="src" path="graph/nvd3/deprecated/charts"/>
+	<classpathentry kind="src" path="graph/nvd3/examples"/>
+	<classpathentry kind="src" path="graph/nvd3/lib"/>
+	<classpathentry excluding="models/backup/|models/" kind="src" path="graph/nvd3/src"/>
+	<classpathentry excluding="backup/" kind="src" path="graph/nvd3/src/models"/>
+	<classpathentry kind="src" path="graph/nvd3/src/models/backup"/>
+	<classpathentry kind="src" path="home"/>
+	<classpathentry excluding="Detailed/|css/|Menu/" kind="src" path="xy"/>
+	<classpathentry kind="src" path="xy/css"/>
+	<classpathentry kind="src" path="xy/Detailed"/>
+	<classpathentry kind="src" path="xy/Menu"/>
+	<classpathentry kind="src" path="init"/>
+	<classpathentry kind="src" path="login"/>
+	<classpathentry kind="src" path="menu"/>
+	<classpathentry kind="src" path="sharing"/>
+	<classpathentry excluding="jbrowse/|jbrowse/users/guest/Project1/View1/data/|jbrowse/users/admin/Project1/View1/data/|jbrowse/js/|jbrowse/users/admin/BuildReference/View4/data/|jbrowse/jslib/dojo/nls/|jbrowse/jslib/dojo/_firebug/|jbrowse/jslib/dojo/|jbrowse/tests/|jbrowse/users/guest/Project1/View2/data/|jbrowse/jslib/dojo/resources/|jbrowse/users/admin/Project2/Parkinsons/data/|jbrowse/twiki/|jbrowse/users/admin/BuildReference/View3/data/" kind="src" path="view"/>
+	<classpathentry excluding="users/guest/Project1/View1/data/|users/admin/Project1/View1/data/|js/|users/admin/BuildReference/View4/data/|jslib/dojo/nls/|jslib/dojo/_firebug/|jslib/dojo/|tests/|users/guest/Project1/View2/data/|jslib/dojo/resources/|users/admin/Project2/Parkinsons/data/|twiki/|users/admin/BuildReference/View3/data/" kind="src" path="view/jbrowse"/>
+	<classpathentry kind="src" path="view/jbrowse/js"/>
+	<classpathentry excluding="nls/|_firebug/|resources/" kind="src" path="view/jbrowse/jslib/dojo"/>
+	<classpathentry kind="src" path="view/jbrowse/jslib/dojo/_firebug"/>
+	<classpathentry kind="src" path="view/jbrowse/jslib/dojo/nls"/>
+	<classpathentry kind="src" path="view/jbrowse/jslib/dojo/resources"/>
+	<classpathentry kind="src" path="view/jbrowse/tests"/>
+	<classpathentry kind="src" path="view/jbrowse/twiki"/>
+	<classpathentry kind="src" path="view/jbrowse/users/admin/BuildReference/View3/data"/>
+	<classpathentry kind="src" path="view/jbrowse/users/admin/BuildReference/View4/data"/>
+	<classpathentry kind="src" path="view/jbrowse/users/admin/Project1/View1/data"/>
+	<classpathentry kind="src" path="view/jbrowse/users/admin/Project2/Parkinsons/data"/>
+	<classpathentry kind="src" path="view/jbrowse/users/guest/Project1/View1/data"/>
+	<classpathentry kind="src" path="view/jbrowse/users/guest/Project1/View2/data"/>
+	<classpathentry excluding="Apps/|RunStatus/" kind="src" path="workflow"/>
+	<classpathentry kind="src" path="workflow/Apps"/>
+	<classpathentry kind="src" path="workflow/RunStatus"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

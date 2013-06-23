@@ -1,0 +1,17 @@
+#### IGNORE THESE FILES
+log/*
+bin/test
+cgi-bin/*.err
+cgi-bin/*.out
+cgi-bin/input.json
+t/bin/*/outputs/*.log
+t/bin/*/*/outputs/*.log
+t/bin/*/*/*/outputs/*.log
+t/bin/*/*/*/*/outputs/*.log
+t/bin/*/*/*/*/*/outputs/*.log
+t/bin/*/*/*/*/*/*/outputs/*.log
+t/bin/*/*/*/*/*/*/*/outputs/*.log
+
+
+#### DON'T IGNORE THESE FILES
+!conf/.dummy

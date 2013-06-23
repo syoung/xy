@@ -1,0 +1,143 @@
+<div data-dojo-attach-point="containerNode">
+
+	<div
+		data-dojo-attach-point="mainTab"
+		data-dojo-type="dijit.layout.ContentPane"
+		class="xy"
+		iconClass="xyIcon"
+		minWidth="1000"
+		style="position: relative; min-width: 440px !important; width: 100% !important; min-height: 500px !important; height: 100% !important; padding: 0px; background: #FFF;"
+		closable="true"
+		scrollbar="true"
+		title="myXY"
+	>
+
+		<div
+			class="leftPaneContainer"
+			style="width: 470px; height:300px; padding: 5px;"
+			data-dojo-type="dijit.layout.BorderContainer">
+
+			<!-- LEFT PANE -->
+			
+			<div
+				data-dojo-type="dojox.layout.ExpandoPane" 
+				splitter="true" 
+				duration="125" 
+				region="left"
+				class="leftPane"
+				title=""
+				previewOnDblClick="true"
+				maxWidth="275" 
+				startExpanded="true"
+				style="width: 460px;">
+				
+
+				<div
+					data-dojo-attach-event="onclick:toggleCreate"
+					class="createTitle"
+					title="Input your experiment information">
+					Create Experiment
+				</div>
+
+				<div
+					data-dojo-attach-point="createExperiment"
+					class="createExperiment"
+				>
+
+					<div class="subTitle">
+						Create a New Experiment
+					</div>
+					
+					<table
+						class="createTable">
+						<tr>
+							<td class="label">Name your experiment</td>
+						</tr>
+						<tr>
+							<td>
+								<input
+									class="input"
+									data-dojo-attach-point="input"
+									type="text"
+									data-dojo-type="dijit/form/ValidationTextBox"
+									required="true"
+								/> 
+							</td>
+						</tr>
+						<tr>
+							<td class="label">How many things do you want to measure?</td>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<select
+									data-dojo-attach-point="variableSelect"
+									data-dojo-attach-event="onChange:setVariableInputs"
+									data-dojo-type="dijit/form/Select"
+									data-dojo-props='name:"variableSelect"',
+									class="options"
+									style="width: 220px !important; text-align: center !important;"
+								>
+								
+									<option value="1">One</option>
+									<option value="2">Two</option>
+
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div
+									data-dojo-attach-point="variableInputs"
+								>
+									Input variables
+								</div>
+							</td>
+						</tr>
+
+
+						<tr>
+							<td
+								height="50"
+								colspan="3"
+								data-dojo-attach-point="saveButton"
+								class="saveButton"
+								dojoAttachEvent="onclick:save"
+							>
+								Save
+							</td>
+						</tr>
+
+					</table>
+
+				</div>
+
+				<div class="listTitle" title="List of your existing experiments">
+					My Experiments
+				</div>			
+				<div
+					class="experimentList"
+				>
+					List of experiment thumbnails
+				</div>					
+
+			</div>
+			
+			<div
+				data-dojo-attach-point="centerTabContainer"
+				data-dojo-type="plugins.dijit.layout.TabContainer"
+				class="details"
+				region="center"
+				doLayout="true"
+				tabStrip="true">
+
+			</div>
+
+<!--		<div
+			class="dialog"
+			data-dojo-attach-point="uploadDialogAttachPoint">
+		</div>
+-->
+	</div>
+
+</div>

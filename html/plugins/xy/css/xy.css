@@ -1,0 +1,184 @@
+/*@import "../../../dojo/dgrid/css/dgrid.css";*/
+@import "../../../dojo/dojo/resources/dojo.css";
+/* @import "../../../dojo/dijit/tests/css/dijitTests.css"; */
+
+.xy .leftPane .nowrapTabStrip.dijitTabContainerTop-tabs {
+    z-index: 10 !important;
+}
+
+/* REMOVE ALL TAB PADDING */
+.claro .dijitTabContainerTop-tabs .dijitTabChecked {
+    padding: 0px !important;   
+}
+.wrap {
+	margin: 0;
+	padding: 15px;
+}
+.wrap h3 {
+	margin-top: 5px;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    font-family: "Lucida Grande", sans-serif;
+    font-size: 12px;
+    position: relative;
+}
+
+.xy .dgrid-row-even {
+    background-color: #EEF;
+}
+.xy .dgrid-row-odd {
+    background-color: #AEF;
+}
+.xy .dgrid-selected {
+    background-color: rgb(247, 226, 172);
+}
+.xy .logo {
+    width: 30px;
+    height: 30px;
+    background-image: url(../../../../../../images/logo-30.png);
+    background-repeat: no-repeat !important;
+    display: inline-block;
+}
+
+/* RAISE UP DRILLDOWN TABS */
+.xy .lists .dojoxExpandoContent {
+    top: -10px !important;
+}
+
+/* LIMIT WIDTH OF LIST CONTAINER */
+.xy .listContainer {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    /* DON'T SPECIFY HEIGHT TO ENSURE SCROLL SHRINKS WITH SPLITTER */
+    top: 0px !important;
+    bottom: 55px;
+}
+
+/* TAB LIST WIDTH */
+.xy .dijitTabListWrapper .dijitTabContainerTopStrip .dijitAlignClient {
+    width: 100% !important;
+}
+.claro .xy .dijitTabPaneWrapper,
+.claro .xy .dijitTabContainerTop-tabs,
+.claro .xy .dijitTabContainerBottom-tabs,
+.claro .xy .dijitTabContainerLeft-tabs,
+.claro .xy .dijitTabContainerRight-tabs {
+	border: none !important;
+    width: 100% !important;
+	height: 100% !important;
+	z-index: 10 !important;
+}
+
+.claro .xy .dijitSplitterHActive {
+    height: 10px !important;
+}
+
+.claro .xy .dijitSplitterVActive {
+    width: 10px !important;
+}
+
+
+
+/* LEFT PANE */
+.xy .leftPane .dojoxExpandoContent .dijitExpandoPaneSingleChild,
+.xy .dojoxExpandoPane .dijitExpandoPane .leftPane .dojoxExpandoWrapper {
+    top: -5px !important;
+}
+
+/* SHOW LISTS IN LEFT PANE */
+.xy .leftContainer {
+	height: 600px !important;
+	width: 600px !important;
+}
+.xy .dijitHidden {
+	/*display: inline !important;*/
+}
+
+.xy .dijitTabListContainer-top.dijitTabController.dijitScrollingTabController {
+    display: inline !important;
+}
+    
+.xy .leftPaneContainer {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.xy .centerPane .dijitTabListContainer-top.dijitTabController.dijitScrollingTabController {
+    display: none !important;
+    visibility: invisible !important;
+}
+
+/* BUTTONS */
+.xy .saveButton {
+	/* SIZE, BORDER */
+	background-color: #FFF;
+	border: 3px solid #EEE;
+	border-bottom-color: #DDD;	
+	border-left-color: #DDD;	
+	vertical-align: middle;
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 40px;
+	border-radius: 8pt;
+	
+	/* TEXT */
+	-moz-user-select: none;
+    color: #222;
+    font-weight: bolder;
+    font-size: 28px;
+	vertical-align: middle;
+	text-align: center;
+	margin-top: 5px;
+}
+
+.xy .saveButton:hover,
+.xy .saveButton:active {
+	background-color: #8F8 !important;
+	border: 3px solid #DDD;
+	border-bottom-color: #BBB;	
+	border-left-color: #BBB;	
+}
+.xy .saveButton:active{
+	background-color: #0F0 !important;
+}
+
+/* CREATE EXPERIMENT */
+.xy .createExperiment {
+	background-color: red;
+	display: none;
+}
+.xy .createExperiment .subTitle {
+	font-size: 24px;
+	color: #444;
+	height: 28px;
+}
+
+.xy .createTable {
+    text-align: left;
+	width: 100%;
+}
+
+.xy .createExperiment.visible {
+	display: inline;
+}
+
+.xy .listTitle,
+.xy .createTitle {
+    text-align: center;
+	width: 100%;
+	font-size: 30px;
+	color: darkblue;
+}
+
+
+/* EXPERIMENT LIST */
+

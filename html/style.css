@@ -1,0 +1,78 @@
+table.gridtable {
+    font-family: verdana,arial,sans-serif;
+    font-size:12px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+}
+table.gridtable th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+}
+table.gridtable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+}
+
+
+body {  
+    margin: 0px;  
+    padding: 0px;  
+}  
+  
+/* h1 tag style */  
+h1 {  
+    margin: 0px;  
+    padding: 0px;  
+    font-family: arial;  
+    font-size: 140%;  
+    color: #ffffff;  
+}  
+  
+/* CSS Style Rule for Div having id="outer-container" */  
+/* outer-container will hold the whole assembly of  
+   nested div overlays. */  
+/* It will also center align the design */  
+#outer-container {  
+    width: 900px;  
+    margin: 0 auto;  
+}  
+  
+/* header CSS Style Rule */  
+#header {  
+    width: 900px;  
+    height: 40px;  
+    background-color: LightSteelBlue  ;   
+}  
+  
+/* footer CSS Style Rule */  
+#footer {  
+    width: 900px;  
+	text-align: right;
+    background-color: LightSteelBlue ;  
+	clear: both ; 
+}  
+  
+/* Top navigation CSS Style Rule */  
+#top-Nav {  
+    width: 900px;  
+    background-color: black;  
+    margin: 2px 0px 2px 0px;  
+}  
+  
+/* content-container CSS Style Rule */  
+/* It will hold the main content of the page. */  
+#content-container {  
+    width: 900px;  
+	min-height: 500px; 
+	height:auto !important; 
+	height: 500px; 
+    margin: 2px 2px 2px 0px;  
+}  

@@ -1,0 +1,18 @@
+admins: stuart,tyler,philip
+database:
+  DATABASE: xy
+  DBTYPE: MySQL
+  PASSWORD: 1234
+  TESTDATABASE: testdatabase
+  TESTPASSWORD: testpassword
+  TESTUSER: testuser
+  USER: xy
+tables:
+  poll: poll
+  dataseries: dataseries
+  slider: slider
+  users: users
+test:
+  TESTDATABASE: testdatabase
+  TESTPASSWORD: testpassword
+  TESTUSER: testuser

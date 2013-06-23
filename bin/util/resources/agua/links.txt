@@ -1,0 +1,10 @@
+#### HTML DIR 
+INSTALLDIR/html       WWWDIR/html/URLPREFIX
+WWWDIR/html//URLPREFIX/dojo-*       WWWDIR/html/URLPREFIX/dojo
+
+#### CGI DIR
+INSTALLDIR/cgi-bin    WWWDIR/cgi-bin/URLPREFIX
+INSTALLDIR/lib        WWWDIR/cgi-bin/URLPREFIX/lib
+INSTALLDIR/bin/sql    WWWDIR/cgi-bin/URLPREFIX/sql
+INSTALLDIR/conf       WWWDIR/cgi-bin/URLPREFIX/conf
+INSTALLDIR/log        WWWDIR/cgi-bin/URLPREFIX/log
