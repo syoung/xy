@@ -50,6 +50,13 @@ startup : function () {
 	
 	// SET ADMIN BUTTON LISTENER
 	var listener = dojo.connect(this.menuButton, "onClick", this, "createTab");
+
+	// CREATE TAB
+    var thisObject = this;
+    setTimeout(function(){
+        thisObject.tabPanes.push(thisObject.createTab());
+    },
+    200);
 },
 createTab : function (args) {
 	console.log("Controller.createTab    plugins.home.Controller.createTab");
