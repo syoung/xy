@@ -164,8 +164,8 @@ body {
 }
 
 .xy .createTable {
-    text-align: left;
-	width: 100%;
+/*    text-align: left;
+*/	width: 100%;
 }
 
 .xy .createExperiment.visible {
@@ -200,4 +200,7 @@ body {
 
 
 /* EXPERIMENT LIST */
+.xy .createExperiment .dijit.dijitValidationTextBox {
+    font-size: 20px;
+}
 

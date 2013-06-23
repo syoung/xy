@@ -128,6 +128,10 @@ startup : function () {
 	
 	// SET DEFAULT VARIABLES
 	this.setVariables(1);
+
+	// SET EXPERIMENTS
+	this.setExperiments();
+
 	//// SET VARIABLE SELECT
 	//this.setVariableSelect();
 
@@ -207,6 +211,7 @@ setOptions : function (selectName, options) {
 
 	this[selectName].set('options', options);
 },
+
 // VARIABLE INPUTS
 setVariableInputs : function () {
 	var value =  this.variableSelect.value;
