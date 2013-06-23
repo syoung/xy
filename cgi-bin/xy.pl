@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 my $DEBUG = 0;
-$DEBUG = 1;
+#$DEBUG = 1;
 
 #### REDIRECT STDOUT AND STDERR TO FILE
 #my $outfile = "./xy.out";

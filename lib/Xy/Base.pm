@@ -130,10 +130,7 @@ method getData {
 
 	#### GET TABLES
 	my $tables 			=	$self->conf()->getKey("tables", undef);
-#	$self->logDebug("tables", $tables);
-#$self->logDebug("DEBUG EXIT") and exit;
 
-	
 	#### ADMIN-ONLY
 	$tables->{users} 	= 	"users" if $self->isAdminUser($username);
 
@@ -141,15 +138,9 @@ method getData {
 	my $output;
 	my @keys = keys %$tables;
 	foreach my $key ( sort @keys ) {
-		
 		$self->logDebug("key", $key);
 		
-		#next if $key ne "sample" and $key ne "lane" and $key ne "project" and $key ne "flowcell" and $key ne "requeuereport" and $key ne "flowcelllaneqc" and $key ne "trimreport" and $key ne "flowcellreporttrim" and $key ne "status" and $key ne "workflow" and $key ne "workflow_queue";
-		#next if $key ne "sample" and $key ne "lane" and $key ne "project";
-		#next if $key ne "sample" and $key ne "lane";
-		
 		my $data = $self->_getTable($tables->{$key});
-		#$self->logDebug("data", $data);
 		$output->{$key} = $data;
 	}
 
@@ -168,7 +159,7 @@ method getData {
     #my $jsonText = $jsonParser->encode($output);
 
 	#### TO AVOID HIJACKING --- DO NOT--- PRINT AS 'json-comment-optional'
-	print "{}&&$jsonText";
+	print $jsonText;
 	return;
 }
 
