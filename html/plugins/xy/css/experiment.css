@@ -1,10 +1,19 @@
 /* EXPERIMENT */
 .xy .experimentList .experiment {
     font-size: 20px;
-	background-color: white
+	background-color: white;
+    box-shadow: -1px 2px 20px #888888 !important;	
 }
-.xy .experimentList .experimentName {
+.xy .experimentList .experiment .experimentName {
     font-size: 20px;
+	color: #088;
+	text-shadow: 1px 1px #888;
+    background-color: #E9E9E9;
+    border-radius: 8pt;
+    height: 35px;
+    font-weight: bolder;
+    text-indent: 10px;
+    
 }
 
 .xy .experimentList .datetime {

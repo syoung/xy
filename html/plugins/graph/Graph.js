@@ -80,7 +80,6 @@ lineChart : function (target, svg, data, xLabel, yLabel, legend) {
 	
 	var chart = nv.models.lineChart();
 
-
 	console.log("Graph.lineChart    BEFORE");
 
 	chart.xAxis
@@ -89,7 +88,7 @@ lineChart : function (target, svg, data, xLabel, yLabel, legend) {
 	
 	console.log("Graph.lineChart    BEFORE chart.yAxis");
 	chart.yAxis
-		.axisLabel('Voltage (v)')
+		.axisLabel('Blood Glucose (ppm)')
 		.tickFormat(d3.format('.02f'));
 	
 	console.log("Graph.lineChart    BEFORE d3.select");

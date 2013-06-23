@@ -69,19 +69,45 @@ startup : function () {
 },
 setDateTime : function () {
 	console.log("Experiment.setDateTime");
-	var datetime = this.mysqlToDate(this.entries[0].datetime);
+	//var date = this.mysqlToDate(this.entries[0].datetime);
+	var datetime = this.formatDate(this.entries[0].datetime);
 
 	console.log("Experiment.setDateTime    datetime: " + datetime);
 
 	this.datetime.innerHTML = datetime;
 },
 
-mysqlToDate : function (datetime) {
-// format: 2007-06-05 15:26:02
-	var regex=/^([0-9]{2,4})-([0-1][0-9])-([0-3][0-9]) (?:([0-2][0-9]):([0-5][0-9]):([0-5][0-9]))?$/;
-	var parts = datetime.replace(regex,"$1 $2 $3 $4 $5 $6").split(' ');
-	return new Date(parts[0],parts[1]-1,parts[2],parts[3],parts[4],parts[5]);
+formatDate : function (date) {
+    var d = new Date(date);
+    var hh = d.getHours();
+    var m = d.getMinutes();
+    var s = d.getSeconds();
+    var dd = "AM";
+    var h = hh;
+    if (h >= 12) {
+        h = hh-12;
+        dd = "PM";
+    }
+    if (h == 0) {
+        h = 12;
+    }
+    m = m<10?"0"+m:m;
+
+    s = s<10?"0"+s:s;
+
+    /* if you want 2 digit hours:
+    h = h<10?"0"+h:h; */
+
+    var pattern = new RegExp("0?"+hh+":"+m+":"+s);
+	
+    var repalcement = h+":"+m;
+    /* if you want to add seconds
+    repalcement += ":"+s;  */
+    repalcement += " "+dd;    
+
+    return date.replace(pattern,repalcement);
 },
+
 setVariables : function (entries) {
 	console.log("Experiment.setVariables    entries: " + entries);
 	console.dir({entries:entries});
@@ -97,6 +123,14 @@ setVariables : function (entries) {
 		domClass.add(div, "variable");
 	}
 },
+
+/* DEPRECATED */
+mysqlToDate : function (datetime) {
+// format: 2007-06-05 15:26:02
+	var regex=/^([0-9]{2,4})-([0-1][0-9])-([0-3][0-9]) (?:([0-2][0-9]):([0-5][0-9]):([0-5][0-9]))?$/;
+	var parts = datetime.replace(regex,"$1 $2 $3 $4 $5 $6").split(' ');
+	return new Date(parts[0],parts[1]-1,parts[2],parts[3]);
+}
 
 
 }); 	//	end declare

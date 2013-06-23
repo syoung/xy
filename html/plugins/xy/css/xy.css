@@ -182,11 +182,11 @@ body {
 .xy .createTitle {
     border-radius: 8pt !important;
     border: 1px solid #DFE !important;
-	background-color: #EEE !important;
     text-align: center;
-	width: 100%;
+	width: 99%;
 	font-size: 30px;
-	color: #8#;
+	border: 2px solid #F76614 !important;	
+	background-color: #FFF !important;
 }
 
 
