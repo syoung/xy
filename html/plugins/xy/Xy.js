@@ -131,9 +131,8 @@ startup : function () {
 
 	// SET EXPERIMENTS
 	this.setExperiments();
-
-	//// SET VARIABLE SELECT
-	//this.setVariableSelect();
+	
+	
 
 	//// SET EXCHANGE 
 	//this.core.exchange = this.setExchange();	
@@ -211,6 +210,17 @@ setOptions : function (selectName, options) {
 
 	this[selectName].set('options', options);
 },
+// EXPERIMENT LIST
+setExperiments : function () {
+	console.log("Xy.setExperiments    DOING this.clearDiv('experimentList')");
+	this.clearDiv("experimentList");
+	
+
+	var experiments = Agua.cloneData('experiment');
+	console.log("Xy.setExperiments    experiments: " + experiments);
+	console.dir({experiments:experiments});
+
+},
 
 // VARIABLE INPUTS
 setVariableInputs : function () {
@@ -258,12 +268,17 @@ setVariables : function (value) {
 	
 },
 clearVariableInputs : function () {
-	this.variableInputs.innerHTML = "";
+	this.clearDiv("variableInputs");
+},
+clearExperimentList : function () {
+	this.clearDiv("experimentList");
+},
+clearDiv : function (divName) {
+	this[divName].innerHTML = "";
 
-	while ( this.variableInputs.childNodes != null && this.variableInputs.childNodes.length != 0 ) {
-		this.variableInputs.removeChild(this.variableInputs.childNodes[0]);
-	}	
-
+	while ( this[divName].childNodes != null && this[divName].childNodes.length != 0 ) {
+		this[divName].removeChild(this[divName].childNodes[0]);
+	}
 },
 // SAVE
 save : function () {
