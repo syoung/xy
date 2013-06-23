@@ -277,16 +277,53 @@ method createExperiment () {
 	
 	my $exists = $self->experimentExists($username, $experiment);	
 	$self->logDebug("exists", $exists);	
+	$self->logError("Experiment already exists: $experiment") and exit if $exists;
+	
+	my $variables = $query->{variables};
+	$self->logDebug("variables", $variables);
+	#### ERROR RETURN IF NO VARIABLES ?
 
+	my $success = $self->_createExperiment($username, $experiment, $variables);
+
+	$self->logStatus("Successfully created experiment: $experiment") and return if $success;
+	
+	$self->logDebug("Failed to create experiment: $experiment");	
+}
+
+method _createExperiment ($username, $experiment, $variables) {
+	
+	my $required = [ "username", "experiment"];
+	my $table = "experiment";
+	my $fields = $self->db()->fields($table);
+	$self->logDebug("fields", $fields);
+
+	foreach my $variable ( @$variables ) {
+		my $hash = {};
+		$hash->{type} = $variable;
+		$hash->{datetime} = $self->db()->now();
+		$hash->{experiment}	=	$experiment;
+		$hash->{username}	=	$username;
+		
+		my $success = $self->_addToTable($table, $hash, $required, $fields);
+		if ( not $success) {
+			return 0;
+		}
+	}
+	
+	return 1;
 }
 
 method experimentExists ($username, $experiment) {
 	my $query = qq{SELECT 1 FROM experiment
 WHERE username='$username'
 AND experiment='$experiment'};
+	$self->logDebug("query", $query);
 	my $exists = $self->db()->query($query);
 	$self->logDebug("exists", $exists);
 	
+	return 0 if not defined $exists or not $exists;
+	
+	return 1;
 }
 
 method _updateTable ($table, $data, $required_fields, $set_data, $set_fields){
@@ -481,7 +518,7 @@ method addLane ($data) {
 	return $self->_addToTable($table, $data, $requiredfields, $fields);
 }
 
-method _addToTable {
+method _addToTable ($table, $hash, $required_fields, $inserted_fields) {
 =head2
 
 	SUBROUTINE		_addToTable
@@ -500,11 +537,6 @@ method _addToTable {
         
 =cut
 
-	my $table			=	shift;
-	my $hash			=	shift;
-	my $required_fields	=	shift;
-	my $inserted_fields	=	shift;
-	
 	#### CHECK FOR ERRORS
     $self->logError("hash not defined") and return if not defined $hash;
     $self->logError("required_fields not defined") and return if not defined $required_fields;

@@ -214,7 +214,8 @@ method _updateTable ($table, $hash, $required_fields, $set_hash, $set_fields) {
 	$self->logNote("result", $result);
 }
 
-method _addToTable {
+method _addToTable ($table, $hash, $required_fields, $inserted_fields) {
+
 =head2
 
 	SUBROUTINE		_addToTable
@@ -232,11 +233,7 @@ method _addToTable {
 		3. HASH CONTAINING TABLE FIELD KEY-VALUE PAIRS
         
 =cut
-	my $table			=	shift;
-	my $hash			=	shift;
-	my $required_fields	=	shift;
-	my $inserted_fields	=	shift;
-	
+
 	#### CHECK FOR ERRORS
     $self->logError("hash not defined") and return if not defined $hash;
     $self->logError("required_fields not defined") and return if not defined $required_fields;
