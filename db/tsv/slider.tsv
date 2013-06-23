@@ -1,2 +1,4 @@
 tyler	bloodGlucose	linear	0	1000	Blood Glucose	Blood Glucose
 tyler	bloodGlucose	linear	0	300	Fasting Time	Fasting Time
+guest	bloodGlucose	linear	0	1000	Blood Glucose	Blood Glucose
+guest	bloodGlucose	linear	0	300	Fasting Time	Fasting Time
