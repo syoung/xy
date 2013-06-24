@@ -214,7 +214,6 @@ setOptions : function (selectName, options) {
 setExperiments : function () {
 	console.log("Xy.setExperiments    DOING this.clearDiv('experimentList')");
 	this.clearDiv("experimentList");
-	
 
 	var experiments = Agua.cloneData('experiment');
 	console.log("Xy.setExperiments    experiments: " + experiments);
@@ -290,7 +289,6 @@ displayExperiment : function (experiment, graphType) {
 	graph.print(this.graphAttachPoint, data, "lineChart", "Date", "Freq", "Change in Frequency over Time");
 	
 },
-
 // VARIABLE INPUTS
 setVariableInputs : function () {
 	var value =  this.variableSelect.value;
@@ -349,6 +347,56 @@ clearDiv : function (divName) {
 	}
 },
 // SAVE
+createExperiment : function (query) {
+	console.log("Xy.createExperiment    query:");
+	console.dir({query:query});
+	
+	this._createExperiment(query);
+
+	this.setExperiments();
+},
+_createExperiment : function (query) {
+	console.log("Xy._createExperiment    query:");
+	console.dir({query:query});
+	var experiment = query.experiment;
+	var username = query.username;
+	
+	var datetime = this.getDateTime();
+	console.log("Xy._createExperiment    datetime: " + datetime);
+	
+	var values = query.variables;
+	console.log("Xy._createExperiment    values:");
+	console.dir({values:values});
+	
+	var requiredKeys = [ "username", "experiment", "value"];
+	for ( var i = 0; i < values.length; i++ ) {
+		var value = values[i];
+		var hash = dojo.clone(query);
+		hash.value = value;
+		hash.username = username;
+		hash.experiment = experiment;
+		hash.datetime = datetime;
+	console.log("Xy._createExperiment    values:");
+	console.dir({values:values});
+		
+		Agua.addData("experiment", hash, requiredKeys)
+	}
+
+	this.setExperiments();
+
+},
+getDateTime : function () {
+	var date;
+	date = new Date();
+	date = date.getUTCFullYear() + '-' +
+    ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
+    ('00' + date.getUTCDate()).slice(-2) + ' ' + 
+    ('00' + date.getUTCHours()).slice(-2) + ':' + 
+    ('00' + date.getUTCMinutes()).slice(-2) + ':' + 
+    ('00' + date.getUTCSeconds()).slice(-2);	
+
+	return date;
+},
 save : function () {
 	console.log("Xy.save    this.inputList: ");
 	console.dir({this_inputList:this.inputList});
@@ -366,9 +414,13 @@ save : function () {
 	query.module 		= 	"Xy::Base";
 	query.variables 	= 	variables;
 	query.experiment	=	this.experimentName.value;
-	console.log("Packages.deleteItem    query: " + dojo.toJson(query));
+	console.log("Xy.save    query: " + dojo.toJson(query));
 
-	this.doPut({url: url, query: query, doToast: false});
+	//this.doPut({url: url, query: query, doToast: false});
+
+	console.log("Xy.save    this: ");
+	console.dir({this:this});
+	this._createExperiment(query);
 },
 // EXCHANGE
 setExchange : function () {

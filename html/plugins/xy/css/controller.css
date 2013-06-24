@@ -1,7 +1,8 @@
 .xyIcon {
-	background-image: url(../images/xy-72x18.png);
+	/*background-image: url("../../../plugins/home/images/xy-72x18.png");*/
+	background-image: url(../images/mydata-96x24.png);
 	background-repeat: no-repeat;
-	width: 72px !important;
+	width: 96px !important;
 	height: 18px !important;
 }
 

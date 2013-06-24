@@ -76,7 +76,6 @@ setDateTime : function () {
 
 	this.datetime.innerHTML = datetime;
 },
-
 formatDate : function (date) {
     var d = new Date(date);
     var hh = d.getHours();

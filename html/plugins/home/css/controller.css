@@ -1,6 +1,7 @@
 .homeIcon {
-	background-image: url("../../../plugins/home/images/home-18.png");
+	background-image: url("../../../plugins/home/images/xy-72x18.png");
+	/*background-image: url(../images/xy-72x18.png);*/
 	background-repeat: no-repeat;
-	width: 18px;
+	width: 72px;
 	height: 18px;
 }
