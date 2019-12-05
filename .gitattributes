@@ -1,8 +1,0 @@
-#### DON'T EXPORT THESE FILES
-t/Makefile		export-ignore
-t/bin/*/outputs/*.log		export-ignore
-t/bin/*/*/outputs/*.log		export-ignore	
-t/bin/*/*/*/outputs/*.log	export-ignore
-t/bin/*/*/*/*/outputs/*.log	export-ignore
-t/bin/*/*/*/*/*/outputs/*.log	export-ignore
-t/bin/*/*/*/*/*/*/outputs/*.log	export-ignore

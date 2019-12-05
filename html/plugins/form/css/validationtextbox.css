@@ -1,9 +1,0 @@
-.form.validationTextBox .label {
-    min-width: 150px !important;
-}
-
-.form.validationTextBox .invalid {
-    border: 2px solid red !important;
-}
-
-
